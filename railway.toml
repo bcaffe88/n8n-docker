@@ -1,6 +1,0 @@
-[deploy]
-buildCommand = "docker build -t n8n-app ."
-startCommand = "docker-compose up"
-
-[build]
-builder = "docker"
