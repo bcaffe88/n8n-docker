@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  n8n:
+    build: .
+    ports:
+      - "8080:5678"
+    environment:
+      - N8N_HOST=0.0.0.0
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - GENERIC_TIMEZONE=America/Sao_Paulo
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+volumes:
+  n8n_data:
