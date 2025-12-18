@@ -1,3 +1,7 @@
+# Este docker-compose.yml é para TESTES LOCAIS apenas!
+# Para deploy no Railway, use o Dockerfile e as variáveis de ambiente do Railway.
+# Consulte RAILWAY_SETUP.md para instruções de configuração no Railway.
+
 services:
   postgres:
     image: postgres:16
@@ -5,7 +9,8 @@ services:
     environment:
       - POSTGRES_DB=n8n
       - POSTGRES_USER=n8n_user
-      - POSTGRES_PASSWORD=n8n_password
+      # ATENÇÃO: Senha de exemplo apenas para testes locais! Troque em produção!
+      - POSTGRES_PASSWORD=CHANGE_THIS_PASSWORD_FOR_PRODUCTION
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -29,11 +34,13 @@ services:
       - DB_POSTGRESDB_HOST=postgres
       - DB_POSTGRESDB_PORT=5432
       - DB_POSTGRESDB_USER=n8n_user
-      - DB_POSTGRESDB_PASSWORD=n8n_password
+      # ATENÇÃO: Senha de exemplo apenas para testes locais! Troque em produção!
+      - DB_POSTGRESDB_PASSWORD=CHANGE_THIS_PASSWORD_FOR_PRODUCTION
       - DB_POSTGRESDB_DATABASE=n8n
       - DB_POSTGRESDB_SCHEMA=public
-      # Chave de criptografia para credenciais (use uma chave segura em produção)
-      - N8N_ENCRYPTION_KEY=your-secure-encryption-key-change-this
+      # ATENÇÃO: Chave de exemplo NUNCA deve ser usada em produção!
+      # Gere uma chave segura com: openssl rand -base64 32
+      - N8N_ENCRYPTION_KEY=EXAMPLE_KEY_NEVER_USE_IN_PRODUCTION_GENERATE_YOUR_OWN
     depends_on:
       postgres:
         condition: service_healthy
