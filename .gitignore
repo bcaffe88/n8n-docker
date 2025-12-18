@@ -1,0 +1,27 @@
+# Arquivos de ambiente local
+.env
+.env.local
+.env.*.local
+
+# Volumes do Docker
+postgres_data/
+n8n_data/
+
+# Logs
+*.log
+logs/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporários
+/tmp/
+*.tmp
